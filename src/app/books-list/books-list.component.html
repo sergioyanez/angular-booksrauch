@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Autor</th>
+            <th>Género</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books" [ngClass]="{'clearence':book.clearance}">
+            <td><img [src]="book.image" [alt]="book.name"/></td>
+            <td>{{book.name | uppercase}}</td>
+            <td>{{book.autor}}</td>
+            <td>{{book.genere}}</td>
+            <td>{{book.price | currency}}</td>
+            <td *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK</td>
+            <td *ngIf="book.stock!=0">{{book.stock}}</td>
+            <td><button class="badge badge-danger" (click)="downQuantity(book)">-</button>
+                <input type="text" [(ngModel)]="book.quantity">               
+                <button class="badge badge-danger" (click)="upQuantity(book)">+</button>
+            </td>
+        </tr>
+      
+    </tbody>    
+</table>
+
