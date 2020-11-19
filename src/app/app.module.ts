@@ -13,6 +13,7 @@ import { BooksDramaComponent } from './books-drama/books-drama.component';
 import { BooksSuspensoComponent } from './books-suspenso/books-suspenso.component';
 import { BooksCortazarComponent } from './books-cortazar/books-cortazar.component';
 import { BooksBorgesComponent } from './books-borges/books-borges.component';
+import { InputDecreIncreComponent } from './input-decre-incre/input-decre-incre.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { BooksBorgesComponent } from './books-borges/books-borges.component';
     BooksSuspensoComponent,
     BooksCortazarComponent,
     BooksBorgesComponent,
+    InputDecreIncreComponent,
   
   ],
   imports: [
