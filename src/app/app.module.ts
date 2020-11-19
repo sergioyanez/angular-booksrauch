@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { BooksListComponent } from './books-list/books-list.component';
 
 import {FormsModule} from '@angular/forms';
+import { BooksContactoComponent } from './books-contacto/books-contacto.component';
+import { BooksCarritoComponent } from './books-carrito/books-carrito.component';
+import { BooksHomeComponent } from './books-home/books-home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    BooksListComponent
+    BooksListComponent,
+    BooksContactoComponent,
+    BooksCarritoComponent,
+    BooksHomeComponent,
+  
   ],
   imports: [
     BrowserModule,

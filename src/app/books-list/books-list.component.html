@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table text-center">
     <thead>
         <tr>
             <th>Imagen</th>
@@ -19,9 +19,18 @@
             <td>{{book.price | currency}}</td>
             <td *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK</td>
             <td *ngIf="book.stock!=0">{{book.stock}}</td>
-            <td><button class="badge badge-danger" (click)="downQuantity(book)">-</button>
-                <input type="text" [(ngModel)]="book.quantity">               
-                <button class="badge badge-danger" (click)="upQuantity(book)">+</button>
+            <td>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend" id="button-addon3">
+                      <button class="btn-btn-danger" (click)="restar(book)"*ngIf="book.stock!=0" type="button">-</button>
+                      <input type="text"
+                             [(ngModel)]="book.quantity"
+                             *ngIf="book.stock!=0"
+                             (keyup)="hayEvento($event,book)">
+                      <button class="btn-btn-danger" (click)="sumar(book)"*ngIf="book.stock!=0" type="button">+</button>
+                    </div>
+                   
+                </div>
             </td>
         </tr>
       

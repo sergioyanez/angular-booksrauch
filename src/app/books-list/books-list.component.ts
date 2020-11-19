@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Key } from 'protractor';
 import { Book } from './Book';
 
 @Component({
@@ -39,18 +40,28 @@ export class BooksListComponent implements OnInit {
       clearance: true,
       quantity : 0,
     }
-]
+];
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  upQuantity(book: Book):void {
+  sumar(book: Book):void {
     if(book.quantity<book.stock)
     book.quantity++;
   }
-  downQuantity(book: Book):void {
+  restar(book: Book):void {
     if(book.quantity>0)
     book.quantity--;
+  }
+  
+  hayEvento(event, book: Book):void{
+   if(event.key==0||event.key==1||event.key==2||event.key==3||event.key==4||event.key==5||event.key==6||event.key==7||event.key==8||event.key==9){
+     if(book.quantity>book.stock)
+        alert("Ingrese una cantidad menor que"+ book.stock);
+   }
+   else
+       event.preventDefault();  
+      
   }
 }
