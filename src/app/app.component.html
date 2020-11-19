@@ -23,41 +23,59 @@
 
     </div>
 
-</header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link seleccionado" href="#"> Home <span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link seleccionado" [routerLink]="['/']"> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Géneros
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" [routerLink]="['/drama']">Drama</a>
+                <a class="dropdown-item" [routerLink]="['/suspenso']">Suspenso</a>                
+              </div>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Autores
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item"  [routerLink]="['/Borges']">Jorge Luis Borges</a>
+                <a class="dropdown-item" [routerLink]="['/Cortazar']">Julio Cortazar</a>                
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Ofertas <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-              <a class="nav-link" href="#">Géneros <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" href="#">Autores <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Ofertas <span class="sr-only">(current)</span></a>
+            <a class="nav-link"  [routerLink]="['/contacto']">Contacto <span class="sr-only">(current)</span></a>
         </li>
 
-      </ul>
+        </ul>
 
+    </div>
+  </nav>
+  <div>
+    <h1>Libros la lechuza lectora</h1>
   </div>
-</nav>
-<div>
-  <h1>Libros la lechuza lectora</h1>
-</div>
 </div>
 <div class="container">
-  <app-books-home></app-books-home>
+  <router-outlet></router-outlet>
 </div>
- <footer>
+<div>
+  <footer class=" bg-dark" >
         <h3 class="text-center ">
-          <img [src]='favicon'>  libroslalechuzalectora@abc.com.ar
+          <img [src]='favicon'>  lalechuzalectora@abc.com.ar
         </h3>
-    </footer>
+  </footer>
+</div>

@@ -1,42 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { Key } from 'protractor';
-import { Book } from './Book';
-
+import { Book } from '../books-list/Book';
 @Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  selector: 'app-books-drama',
+  templateUrl: './books-drama.component.html',
+  styleUrls: ['./books-drama.component.scss']
 })
-export class BooksListComponent implements OnInit {
+export class BooksDramaComponent implements OnInit {
   books: Book[] = [
  
     {
-      name:"La sabiduría de los lobos",
-      autor : "Eli H. Radinger",
-      genere : "Drama",
-      price: 1000,
-      stock : 10,
-      image : "assets/img/libro1.jpg",
-      clearance: false,
-      quantity : 0,
-    },
-    {
-      name:"La viajera del tiempo",
+      name:"La vida que no elegí",
       autor : "Lorena Franco",
-      genere : "Ficción",
-      price: 2000,
-      stock : 0,
-      image : "assets/img/libro2.jpg",
+      genere : "Drama",
+      price: 5000,
+      stock : 30,
+      image : "assets/img/drama1.jpg",
       clearance: false,
       quantity : 0,
     },
     {
-      name:"Los juegos del hambre",
-      autor : "Suzanne Collins",
-      genere : "Ficción",
-      price: 500,
-      stock : 800,
-      image : "assets/img/libro3.jpg",
+      name:"Lo que el viento se llevo",
+      autor : "Margaret Mitchell",
+      genere : "Drama",
+      price: 3500,
+      stock : 150,
+      image : "assets/img/drama2.jpg",
+      clearance: true,
+      quantity : 0,
+    },
+    {
+      name:"El código Da Vinci",
+      autor : "Dan Brown",
+      genere : "Drama",
+      price: 4000,
+      stock : 100,
+      image : "assets/img/drama3.jpg",
       clearance: true,
       quantity : 0,
     },
@@ -45,7 +43,6 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   sumar(book: Book):void {
     if(book.quantity<book.stock)
     book.quantity++;
@@ -64,4 +61,5 @@ export class BooksListComponent implements OnInit {
        event.preventDefault();  
       
   }
+
 }

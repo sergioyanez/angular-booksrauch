@@ -1,43 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Key } from 'protractor';
-import { Book } from './Book';
-
+import { Book } from '../books-list/Book';
 @Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  selector: 'app-books-cortazar',
+  templateUrl: './books-cortazar.component.html',
+  styleUrls: ['./books-cortazar.component.scss']
 })
-export class BooksListComponent implements OnInit {
+export class BooksCortazarComponent implements OnInit {
   books: Book[] = [
  
     {
-      name:"La sabiduría de los lobos",
-      autor : "Eli H. Radinger",
+      name:"Rayuela",
+      autor : "Julio Cortazar",
       genere : "Drama",
       price: 1000,
       stock : 10,
-      image : "assets/img/libro1.jpg",
-      clearance: false,
-      quantity : 0,
-    },
-    {
-      name:"La viajera del tiempo",
-      autor : "Lorena Franco",
-      genere : "Ficción",
-      price: 2000,
-      stock : 0,
-      image : "assets/img/libro2.jpg",
-      clearance: false,
-      quantity : 0,
-    },
-    {
-      name:"Los juegos del hambre",
-      autor : "Suzanne Collins",
-      genere : "Ficción",
-      price: 500,
-      stock : 800,
-      image : "assets/img/libro3.jpg",
+      image : "assets/img/cortazar1.jpg",
       clearance: true,
+      quantity : 0,
+    },
+    {
+      name:"Clases de Literatura",
+      autor : "Julio Cortazar",
+      genere : "Biográfico",
+      price: 3500,
+      stock : 8,
+      image : "assets/img/cortazar2.jpg",
+      clearance: false,
+      quantity : 0,
+    },
+    {
+      name:"Final del Juego",
+      autor : "Julio Cortazar",
+      genere : "Suspenso",
+      price: 4000,
+      stock : 50,
+      image : "assets/img/cortazar3.jpg",
+      clearance: false,
       quantity : 0,
     },
 ];
@@ -45,7 +43,6 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   sumar(book: Book):void {
     if(book.quantity<book.stock)
     book.quantity++;
@@ -64,4 +61,5 @@ export class BooksListComponent implements OnInit {
        event.preventDefault();  
       
   }
+
 }

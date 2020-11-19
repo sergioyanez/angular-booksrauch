@@ -1,43 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Key } from 'protractor';
-import { Book } from './Book';
-
+import { Book } from '../books-list/Book';
 @Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  selector: 'app-books-suspenso',
+  templateUrl: './books-suspenso.component.html',
+  styleUrls: ['./books-suspenso.component.scss']
 })
-export class BooksListComponent implements OnInit {
+export class BooksSuspensoComponent implements OnInit {
   books: Book[] = [
  
     {
-      name:"La sabiduría de los lobos",
-      autor : "Eli H. Radinger",
+      name:"El visitante",
+      autor : "Stephen King",
+      genere : "Suspenso",
+      price: 1800,
+      stock : 40,
+      image : "assets/img/suspenso1.jpg",
+      clearance: false,
+      quantity : 0,
+    },
+    {
+      name:"La chica del tren",
+      autor : "Paula Hawkins",
+      genere : "Suspenso",
+      price: 3500,
+      stock : 150,
+      image : "assets/img/suspenso2.jpg",
+      clearance: false,
+      quantity : 0,
+    },
+    {
+      name:"El silencio de los corderos",
+      autor : "Thomas Harris",
       genere : "Drama",
-      price: 1000,
-      stock : 10,
-      image : "assets/img/libro1.jpg",
+      price: 4000,
+      stock : 100,
+      image : "assets/img/suspenso3.jpg",
       clearance: false,
-      quantity : 0,
-    },
-    {
-      name:"La viajera del tiempo",
-      autor : "Lorena Franco",
-      genere : "Ficción",
-      price: 2000,
-      stock : 0,
-      image : "assets/img/libro2.jpg",
-      clearance: false,
-      quantity : 0,
-    },
-    {
-      name:"Los juegos del hambre",
-      autor : "Suzanne Collins",
-      genere : "Ficción",
-      price: 500,
-      stock : 800,
-      image : "assets/img/libro3.jpg",
-      clearance: true,
       quantity : 0,
     },
 ];
@@ -45,7 +43,6 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   sumar(book: Book):void {
     if(book.quantity<book.stock)
     book.quantity++;
@@ -64,4 +61,5 @@ export class BooksListComponent implements OnInit {
        event.preventDefault();  
       
   }
+  
 }

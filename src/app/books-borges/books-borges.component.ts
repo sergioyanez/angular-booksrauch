@@ -1,42 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { Key } from 'protractor';
-import { Book } from './Book';
-
+import { Book } from '../books-list/Book';
 @Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  selector: 'app-books-borges',
+  templateUrl: './books-borges.component.html',
+  styleUrls: ['./books-borges.component.scss']
 })
-export class BooksListComponent implements OnInit {
+export class BooksBorgesComponent implements OnInit {
   books: Book[] = [
  
     {
-      name:"La sabiduría de los lobos",
-      autor : "Eli H. Radinger",
+      name:"El Aleph",
+      autor : "J.L. Borges",
       genere : "Drama",
       price: 1000,
       stock : 10,
-      image : "assets/img/libro1.jpg",
+      image : "assets/img/borges1.jpg",
       clearance: false,
       quantity : 0,
     },
     {
-      name:"La viajera del tiempo",
-      autor : "Lorena Franco",
+      name:"Cuentos completos",
+      autor : "J.L. Borges",
       genere : "Ficción",
-      price: 2000,
-      stock : 0,
-      image : "assets/img/libro2.jpg",
+      price: 3500,
+      stock : 8,
+      image : "assets/img/borges2.jpg",
       clearance: false,
       quantity : 0,
     },
     {
-      name:"Los juegos del hambre",
-      autor : "Suzanne Collins",
+      name:"Ficciones",
+      autor : "J.L. Borges",
       genere : "Ficción",
-      price: 500,
-      stock : 800,
-      image : "assets/img/libro3.jpg",
+      price: 4000,
+      stock : 100,
+      image : "assets/img/borges3.jpg",
       clearance: true,
       quantity : 0,
     },
@@ -45,7 +43,6 @@ export class BooksListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   sumar(book: Book):void {
     if(book.quantity<book.stock)
     book.quantity++;
@@ -64,4 +61,5 @@ export class BooksListComponent implements OnInit {
        event.preventDefault();  
       
   }
+
 }
