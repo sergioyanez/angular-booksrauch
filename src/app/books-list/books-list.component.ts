@@ -180,4 +180,36 @@ export class BooksListComponent implements OnInit {
   llegoAMax(mensaje:string){
     alert(mensaje);
   }
+
+  getLibrosPorAutor(autor:string):Book[]{
+    let lista:Book[] = [];
+    autor=autor.toLowerCase();
+    for(let i=0;i<this.books.length;i++){
+
+      let b = this.books[i];
+      let nombre = b.autor.toLowerCase();
+
+      if(nombre.indexOf(autor)==0){
+
+        lista.push(b)
+      }
+    }
+    return lista;
+  }
+
+  getLibrosPorGénero(genero:string):Book[]{
+    let lista:Book[] = [];
+    genero=genero.toLowerCase();
+    for(let i=0;i<this.books.length;i++){
+
+      let g = this.books[i];
+      let nombre = g.genere.toLowerCase();
+
+      if(nombre.indexOf(genero)==0){
+
+        lista.push(g)
+      }
+    }
+    return lista;
+  }
 }
