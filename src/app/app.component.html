@@ -1,4 +1,4 @@
-<div> 
+<div>
   <header class="container-12 margeninf">
 
     <div class="row">
@@ -13,9 +13,9 @@
                     <h1 class="text-center">
                       <img [src]='favicon'>{{title}} 2020
                     </h1>
-                 
+
                 </div>
-               
+
             </div>
 
         </div>
@@ -41,22 +41,19 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" [routerLink]="['/drama']">Drama</a>
-                <a class="dropdown-item" [routerLink]="['/suspenso']">Suspenso</a>                
+                <a class="dropdown-item" [routerLink]="['/suspenso']">Suspenso</a>
               </div>
             </li>
-            
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Autores
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item"  [routerLink]="['/Borges']">Jorge Luis Borges</a>
-                <a class="dropdown-item" [routerLink]="['/Cortazar']">Julio Cortazar</a>                
+                <a class="dropdown-item" [routerLink]="['/Cortazar']">Julio Cortazar</a>
               </div>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Ofertas <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item active">
             <a class="nav-link"  [routerLink]="['/contacto']">Contacto <span class="sr-only">(current)</span></a>
         </li>
@@ -65,9 +62,7 @@
 
     </div>
   </nav>
-  <div>
-    <h1>Libros la lechuza lectora</h1>
-  </div>
+
 </div>
 <div class="container">
   <router-outlet></router-outlet>

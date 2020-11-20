@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoComprasService } from '../carrito-compras.service';
 import { Book } from '../books-list/Book';
 @Component({
   selector: 'app-books-drama',
@@ -7,7 +8,7 @@ import { Book } from '../books-list/Book';
 })
 export class BooksDramaComponent implements OnInit {
   books: Book[] = [
- 
+
     {
       name:"La vida que no elegí",
       autor : "Lorena Franco",
@@ -39,9 +40,19 @@ export class BooksDramaComponent implements OnInit {
       quantity : 0,
     },
 ];
-  constructor() { }
+constructor(private carrito:CarritoComprasService) {
+}
 
-  ngOnInit(): void {
-  }
-  
+ngOnInit(): void {
+}
+
+agregarACarrito(book):void{
+  this.carrito.agregarACarrito(book);
+  book.stock-=book.quantity;
+  book.quantity=0;
+}
+
+llegoAMax(mensaje:string){
+  alert(mensaje);
+}
 }

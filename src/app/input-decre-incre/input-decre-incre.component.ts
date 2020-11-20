@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../books-list/Book';
 
 @Component({
@@ -9,25 +9,38 @@ import { Book } from '../books-list/Book';
 export class InputDecreIncreComponent implements OnInit {
 
   constructor() { }
-  @Input()  book:Book;
+  @Input()  cantidad:number;
+  @Input()  max:number;
+
+  @Output() cantidadChange:EventEmitter<number> =new EventEmitter<number>();
+  @Output() llegoAMax:EventEmitter<string> =new EventEmitter<string>();
   ngOnInit(): void {
   }
-  sumar(book: Book):void {
-    if(book.quantity<book.stock)
-    book.quantity++;
+  sumar():void {
+    if(this.cantidad<this.max){
+      this.cantidad++;
+      this.cantidadChange.emit(this.cantidad);
+    }   
+    else
+    this.llegoAMax.emit("Se llegó al máximo de stock");
+
   }
-  restar(book: Book):void {
-    if(book.quantity>0)
-    book.quantity--;
+  restar():void {
+    if(this.cantidad>0)
+    this.cantidad--;
+    this.cantidadChange.emit(this.cantidad);
   }
   
-  hayEvento(event, book: Book):void{
+  hayEvento(event):void{
    if(event.key==0||event.key==1||event.key==2||event.key==3||event.key==4||event.key==5||event.key==6||event.key==7||event.key==8||event.key==9){
-     if(book.quantity>book.stock)
-        alert("Ingrese una cantidad menor que"+ book.stock);
+     if(this.cantidad>this.max){
+        this.cantidadChange.emit(this.cantidad);
+        alert("Ingrese una cantidad menor que "+ this.max);
+     }
    }
-   else
-       event.preventDefault();  
-      
+   else{
+       event.preventDefault(); 
+       this.cantidadChange.emit(this.cantidad);
+   }       
   }
 }

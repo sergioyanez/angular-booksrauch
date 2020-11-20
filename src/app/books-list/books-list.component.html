@@ -18,9 +18,10 @@
             <td>{{book.genere}}</td>
             <td >{{book.price | currency}}</td>                      
             <td> <span *ngIf="book.clearance" class="badge badge-danger"> ¡¡OFERTA!!</span>
-            <span  *ngIf="book.stock!=0">{{book.stock}}</span><span *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK  </span></td>
+            <span  *ngIf="book.stock">{{book.stock}}</span><span *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK  </span></td>
             <td>
-                <app-input-decre-incre [book]="book"*ngIf="book.stock!=0"></app-input-decre-incre>
+                <app-input-decre-incre [(cantidad)]="book.quantity" [max]="book.stock"*ngIf="book.stock"(llegoAMax)="llegoAMax($event)"></app-input-decre-incre>
+                <button class="btn btn-dark" (click)="agregarACarrito(book)"*ngIf="book.stock">Comprar</button>
             </td>
         </tr>
       

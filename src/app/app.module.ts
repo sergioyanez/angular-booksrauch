@@ -7,7 +7,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 
 import {FormsModule} from '@angular/forms';
 import { BooksContactoComponent } from './books-contacto/books-contacto.component';
-import { BooksCarritoComponent } from './books-carrito/books-carrito.component';
+import { BooksCarritoComponent } from './carrito/carrito.component';
 import { BooksHomeComponent } from './books-home/books-home.component';
 import { BooksDramaComponent } from './books-drama/books-drama.component';
 import { BooksSuspensoComponent } from './books-suspenso/books-suspenso.component';

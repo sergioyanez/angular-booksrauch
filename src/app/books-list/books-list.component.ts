@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Key } from 'protractor';
+import { CarritoComprasService } from '../carrito-compras.service';
 import { Book } from './Book';
+
 
 @Component({
   selector: 'app-books-list',
@@ -9,7 +10,7 @@ import { Book } from './Book';
 })
 export class BooksListComponent implements OnInit {
   books: Book[] = [
- 
+
     {
       name:"La sabiduría de los lobos",
       autor : "Eli H. Radinger",
@@ -35,7 +36,7 @@ export class BooksListComponent implements OnInit {
       autor : "Suzanne Collins",
       genere : "Ficción",
       price: 500,
-      stock : 800,
+      stock : 4,
       image : "assets/img/libro3.jpg",
       clearance: true,
       quantity : 0,
@@ -55,7 +56,7 @@ export class BooksListComponent implements OnInit {
       autor : "Julio Cortazar",
       genere : "Biográfico",
       price: 3500,
-      stock : 8,
+      stock : 0,
       image : "assets/img/cortazar2.jpg",
       clearance: false,
       quantity : 0,
@@ -65,7 +66,7 @@ export class BooksListComponent implements OnInit {
       autor : "Julio Cortazar",
       genere : "Suspenso",
       price: 4000,
-      stock : 50,
+      stock : 6,
       image : "assets/img/cortazar3.jpg",
       clearance: false,
       quantity : 0,
@@ -75,7 +76,7 @@ export class BooksListComponent implements OnInit {
       autor : "J.L. Borges",
       genere : "Drama",
       price: 1000,
-      stock : 10,
+      stock : 5,
       image : "assets/img/borges1.jpg",
       clearance: false,
       quantity : 0,
@@ -95,7 +96,7 @@ export class BooksListComponent implements OnInit {
       autor : "J.L. Borges",
       genere : "Ficción",
       price: 4000,
-      stock : 100,
+      stock : 4,
       image : "assets/img/borges3.jpg",
       clearance: true,
       quantity : 0,
@@ -105,7 +106,7 @@ export class BooksListComponent implements OnInit {
       autor : "Lorena Franco",
       genere : "Drama",
       price: 5000,
-      stock : 30,
+      stock : 10,
       image : "assets/img/drama1.jpg",
       clearance: false,
       quantity : 0,
@@ -115,7 +116,7 @@ export class BooksListComponent implements OnInit {
       autor : "Stephen King",
       genere : "Suspenso",
       price: 1800,
-      stock : 40,
+      stock : 9,
       image : "assets/img/suspenso1.jpg",
       clearance: false,
       quantity : 0,
@@ -125,7 +126,7 @@ export class BooksListComponent implements OnInit {
       autor : "Paula Hawkins",
       genere : "Suspenso",
       price: 3500,
-      stock : 150,
+      stock : 2,
       image : "assets/img/suspenso2.jpg",
       clearance: false,
       quantity : 0,
@@ -135,7 +136,7 @@ export class BooksListComponent implements OnInit {
       autor : "Thomas Harris",
       genere : "Drama",
       price: 4000,
-      stock : 100,
+      stock : 3,
       image : "assets/img/suspenso3.jpg",
       clearance: false,
       quantity : 0,
@@ -145,7 +146,7 @@ export class BooksListComponent implements OnInit {
       autor : "Margaret Mitchell",
       genere : "Drama",
       price: 3500,
-      stock : 150,
+      stock : 5,
       image : "assets/img/drama2.jpg",
       clearance: true,
       quantity : 0,
@@ -155,16 +156,28 @@ export class BooksListComponent implements OnInit {
       autor : "Dan Brown",
       genere : "Drama",
       price: 4000,
-      stock : 100,
+      stock : 7,
       image : "assets/img/drama3.jpg",
       clearance: true,
       quantity : 0,
     },
 ];
-  constructor() { }
+
+  constructor(private carrito:CarritoComprasService) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  
+  agregarACarrito(book):void{
+    this.carrito.agregarACarrito(book);
+    book.stock-=book.quantity;
+    book.quantity=0;
+
+  }
+
+  llegoAMax(mensaje:string){
+    alert(mensaje);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarritoComprasService } from '../carrito-compras.service';
 import { Book } from '../books-list/Book';
 @Component({
   selector: 'app-books-suspenso',
@@ -7,7 +8,7 @@ import { Book } from '../books-list/Book';
 })
 export class BooksSuspensoComponent implements OnInit {
   books: Book[] = [
- 
+
     {
       name:"El visitante",
       autor : "Stephen King",
@@ -39,10 +40,21 @@ export class BooksSuspensoComponent implements OnInit {
       quantity : 0,
     },
 ];
-  constructor() { }
+constructor(private carrito:CarritoComprasService) {
+}
 
-  ngOnInit(): void {
-  }
- 
-  
+ngOnInit(): void {
+}
+
+agregarACarrito(book):void{
+  this.carrito.agregarACarrito(book);
+  book.stock-=book.quantity;
+  book.quantity=0;
+}
+
+llegoAMax(mensaje:string){
+  alert(mensaje);
+}
+
+
 }

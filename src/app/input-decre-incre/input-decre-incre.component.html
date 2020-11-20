@@ -1,12 +1,8 @@
 
 <div class="input-group mb-3">
-                    <div class="input-group-prepend" id="button-addon3">
-                      <button class="btn-btn-danger" (click)="restar(book)"*ngIf="book.stock!=0" type="button">-</button>
-                      <input type="text"
-                             [(ngModel)]="book.quantity"
-                             *ngIf="book.stock!=0"
-                             (keyup)="hayEvento($event,book)">
-                      <button class="btn-btn-danger" (click)="sumar(book)"*ngIf="book.stock!=0" type="button">+</button>
-                    </div>
-                   
-                </div>
+  <div class="input-group-prepend" id="button-addon3">
+    <button class="btn-btn-danger " (click)="restar()" type="button">-</button>
+    <input type="text" class="text-center"[(ngModel)]="cantidad" (keyup)="hayEvento($event)">
+    <button class="btn-btn-danger " (click)="sumar()" type="button">+</button>
+  </div>                   
+</div>
