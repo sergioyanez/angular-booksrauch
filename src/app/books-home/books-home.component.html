@@ -3,3 +3,45 @@
     <div class="col-8" ><app-books-list></app-books-list></div>
     <div class="col-4" ><app-books-carrito></app-books-carrito></div>
 </div>
+
+<!--      No se que es mejor si hacer el home de la forma que esta hecha arriba o de la forma
+          que está comentada abajo, que es como estan hecho los otros componentes (Drama, Suspenso, Borges Y Cortazar),
+          de esta última forma se repite mucho código html y no es bueno eso pero puedo utilizar un servicio
+          que me realize los filtrados en busquedas, seguro  se puede refactorizar haciendo otro componente
+          pero no me di cuenta como.
+          Veo que es muy similar a lo que vimos en programación 2 respecto a la programación con objetos,
+          no se si estan bien delegadas las responsabilidades y por ende falta mucho para pulir éste cópdigo
+
+<div class="row">
+  <div class="col-8" >
+<table class="table text-center">
+  <thead>
+      <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Autor</th>
+          <th>Género</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Compra</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let book of books" [ngClass]="{'clearence':book.clearance}">
+          <td><img [src]="book.image" [alt]="book.name"/></td>
+          <td>{{book.name | uppercase}}</td>
+          <td>{{book.autor}}</td>
+          <td>{{book.genere}}</td>
+          <td >{{book.price | currency}}</td>
+          <td> <span *ngIf="book.clearance" class="badge badge-danger"> ¡¡OFERTA!!</span>
+          <span  *ngIf="book.stock">{{book.stock}}</span><span *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK  </span></td>
+          <td>
+              <app-input-decre-incre [(cantidad)]="book.quantity" [max]="book.stock"*ngIf="book.stock"(llegoAMax)="llegoAMax($event)"></app-input-decre-incre>
+              <button class="btn btn-dark" (click)="agregarACarrito(book)"*ngIf="book.stock">Comprar</button>
+          </td>
+      </tr>
+
+  </tbody>
+</table>
+  </div>
+<div class="col-4" ><app-books-carrito></app-books-carrito></div>  -->

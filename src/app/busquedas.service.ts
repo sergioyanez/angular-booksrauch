@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { CarritoComprasService } from '../carrito-compras.service';
-import { Book } from './Book';
+import { Injectable } from '@angular/core';
+import { Book } from './books-list/Book';
 
-
-@Component({
-  selector: 'app-books-list',
-  templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class BooksListComponent implements OnInit {
-  books: Book[] = [
+export class BusquedasService {
+  private _listaPorAutor: Book[]=[];
+  private _listaPorGenero:  Book[]=[];
+  private books: Book[] = [
 
     {
       name:"La sabiduría de los lobos",
@@ -162,24 +160,45 @@ export class BooksListComponent implements OnInit {
       quantity : 0,
     },
 ];
+  constructor() { }
 
-  constructor(private carrito:CarritoComprasService) {
+  getLibros():Book[]{
+    return this.books; //Metodo para usar publicamente nuestro arreglo privado de heroes.
+};
 
+ //Buscador
+ buscarLibrosPorAutor(termino:string):Book[]{
+  let listaLibros:Book[] = [];
+  termino = termino.toLowerCase();
+
+  for(let i=0;i<this.books.length;i++){
+    let libro = this.books[i];
+    let nombre = libro.autor.toLowerCase();
+    if(nombre.indexOf(termino)>=0){
+     listaLibros.push(libro)
+    }
   }
+  return listaLibros;
+}
 
-  ngOnInit(): void {
+
+buscarLibrosPorGenero(termino:string):Book[]{
+  let listaLibros:Book[] = [];
+  termino = termino.toLowerCase();
+  for(let i=0;i<this.books.length;i++){
+    let libro = this.books[i];
+    let nombre = libro.genere.toLowerCase();
+    if(nombre.indexOf(termino)>=0){
+     listaLibros.push(libro)
+    }
   }
+  return listaLibros;
+}
 
-  agregarACarrito(book):void{
-    this.carrito.agregarACarrito(book);
-    book.stock-=book.quantity;
-    book.quantity=0;
-
-  }
-
-  llegoAMax(mensaje:string){
-    alert(mensaje);
-  }
 
 
 }
+//Hacemos una interfaz para decirle a TS que es un arreglo de libros
+// para que no se puedan insertar libros u objetos que NO tengan estas caracteristicas.
+
+

@@ -11,12 +11,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let book of books" [ngClass]="{'clearence':book.clearance}">
+        <tr *ngFor="let book of books" [ngClass]="{'clearence':book.clearance}" >
             <td><img [src]="book.image" [alt]="book.name"/></td>
             <td>{{book.name | uppercase}}</td>
             <td>{{book.autor}}</td>
             <td>{{book.genere}}</td>
-            <td >{{book.price | currency}}</td>                      
+            <td >{{book.price | currency}}</td>
             <td> <span *ngIf="book.clearance" class="badge badge-danger"> ¡¡OFERTA!!</span>
             <span  *ngIf="book.stock">{{book.stock}}</span><span *ngIf="book.stock==0" class="badge badge-danger">SIN STOCK  </span></td>
             <td>
@@ -24,7 +24,7 @@
                 <button class="btn btn-dark" (click)="agregarACarrito(book)"*ngIf="book.stock">Comprar</button>
             </td>
         </tr>
-      
-    </tbody>    
+
+    </tbody>
 </table>
 
