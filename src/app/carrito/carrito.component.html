@@ -6,6 +6,7 @@
           <th>Cantidad</th>
           <th>Nombre</th>
           <th>Autor</th>
+          <th>Precio </th>
           <th>Precio Total</th>
       </tr>
   </thead>
@@ -15,12 +16,13 @@
         <td>{{lista.name | uppercase}}</td>
         <td>{{lista.autor}}</td>
         <td >{{lista.price | currency}}</td>
+        <td>{{lista.quantity * lista.price | currency}}</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
       <th>TOTAL GASTADO</th>
-      <th>$$$$</th>
+      <th>{{total$ | async |currency}}</th>
     </tr>
   </tfoot>
 </table>

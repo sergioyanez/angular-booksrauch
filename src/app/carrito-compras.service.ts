@@ -9,9 +9,13 @@ import { Book } from './books-list/Book';
   providedIn: 'root'
 })
 export class CarritoComprasService {
-private _listaCompras: Book[]=[];
-  listaCompras: BehaviorSubject<Book[]> = new BehaviorSubject([]);
 
+  private _listaCompras: Book[]=[];
+  _total = 0;
+  _contProductos = 0;
+  listaCompras: BehaviorSubject<Book[]> = new BehaviorSubject([]);
+  total: BehaviorSubject<number> = new BehaviorSubject(this._total);
+  cantidad: BehaviorSubject<number> = new BehaviorSubject(this._contProductos);
   constructor() { }
 
 
@@ -24,7 +28,10 @@ private _listaCompras: Book[]=[];
    else{
     item.quantity+=book.quantity;
    }
-   this.listaCompras.next(this._listaCompras)
+   this._total = this._listaCompras.reduce((a, c) => c.price * c.quantity + a, 0);
+   this.listaCompras.next(this._listaCompras);
+   this.cantidad.next(this._contProductos);
+   this.total.next(this._total);
    console.log(this.listaCompras.value);
   }
 }
